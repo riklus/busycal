@@ -6,7 +6,7 @@ I use it on Google Calendar for my university lectures. The university's iCalend
 ## Quickstart
 
 ```
-sudo docker build . -t busycal
+docker build . --target build-image -t busycal
 sudo docker run busycal --bind 0.0.0.0:8000
 ```
 
