@@ -10,6 +10,6 @@ sudo docker build . -t busycal
 sudo docker run busycal --bind 0.0.0.0:8000
 ```
 
-The new iCalendar link will be: `http://127.0.0.1:8000/?url=<ical url>`
+The new iCalendar link will be: `http://127.0.0.1:8000/?url=<ical_url>`
 
-You can protect the endpoint with a token setting the enviroment variable `BUSYCAL_TOKEN` to a token of your choice. Then just add to the url the query parameter `token=<your token>`.
+You can protect the endpoint with a token by setting the enviroment variable `BUSYCAL_TOKEN` to a token of your choice. After that you just add to the request url the query parameter `token=<BUSYCAL_TOKEN>`.
