@@ -26,6 +26,6 @@ async def ical():
 
     busy = RE_TRANSPARENT.sub(r"TRANSP:OPAQUE", res.text)
     if prepend:
-        busy = RE_TRANSPARENT.sub(rf"TDESCRIPTION:{prepend} ", res.text)
+        busy = RE_DESCRIPTION.sub(rf"TDESCRIPTION:{prepend} ", res.text)
 
     return Response(busy, mimetype="text/plain")
