@@ -12,11 +12,12 @@ RE_TRANSPARENT = re.compile(r"^\bTRANSP:TRANSPARENT\b", flags=re.MULTILINE)
 
 @app.route("/")
 async def ical():
-    ical = request.args.get("ical")
     token = request.args.get("token")
 
     if BUSYCAL_TOKEN and token != BUSYCAL_TOKEN:
         abort(403)
+
+    ical = request.args.get("ical")
 
     async with httpx.AsyncClient() as client:
         res = await client.get(ical)
