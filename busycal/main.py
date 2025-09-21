@@ -8,7 +8,7 @@ from busycal import app
 
 BUSYCAL_TOKEN = os.getenv("BUSYCAL_TOKEN")
 RE_TRANSPARENT = re.compile(r"^\bTRANSP:TRANSPARENT\b", flags=re.MULTILINE)
-RE_DESCRIPTION = re.compile(r"^\bDESCRIPTION:\b", flags=re.MULTILINE)
+RE_SUMMARY = re.compile(r"^\bSUMMARY:\b", flags=re.MULTILINE)
 
 
 @app.route("/")
@@ -26,6 +26,6 @@ async def ical():
 
     busy = RE_TRANSPARENT.sub(r"TRANSP:OPAQUE", res.text)
     if prepend:
-        busy = RE_DESCRIPTION.sub(rf"DESCRIPTION:{prepend} ", res.text)
+        busy = RE_SUMMARY.sub(rf"SUMMARY:{prepend} ", res.text)
 
     return Response(busy, mimetype="text/plain")
